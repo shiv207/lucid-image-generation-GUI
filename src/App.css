@@ -1,0 +1,41 @@
+/* Custom styles for Lucid app */
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #0f172a;
+}
+
+/* Fix for glassmorphism on Safari */
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .glass, .glass-dark, .glass-card {
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+  }
+}
+
+/* Fallback for browsers that don't support backdrop-filter */
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .glass {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+  
+  .glass-dark {
+    background-color: rgba(15, 23, 42, 0.85);
+  }
+  
+  .glass-card {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+}

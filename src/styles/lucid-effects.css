@@ -1,0 +1,273 @@
+/* Nike-inspired minimalist styling */
+
+/* Nike/Apple style bold text */
+.lucid-gradient-text {
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  font-size: 48px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* Nike-style button effect */
+.lucid-button-glow {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  border-radius: 20px !important;
+  background-color: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  font-weight: 500 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 13px !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+  height: 36px;
+  padding: 0 16px !important;
+  margin-right: 8px;
+}
+
+.lucid-button-glow:hover {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Generate button Nike styling */
+.lucid-generate-button {
+  background-color: black !important;
+  color: white !important;
+  border: 1px solid white !important;
+  border-radius: 20px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 14px !important;
+  height: 40px;
+  padding: 0 24px !important;
+  position: relative;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.lucid-generate-button:hover {
+  background-color: #f5f5f5 !important;
+}
+
+/* Nike-style empty state */
+.lucid-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0;
+  text-align: center;
+  background: transparent;
+  border: none;
+  max-width: 600px;
+  margin: 0 auto;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+}
+
+.lucid-empty-icon {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: transparent;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+}
+
+.lucid-empty-icon svg {
+  width: 40px;
+  height: 40px;
+  stroke: white;
+  stroke-width: 1.5;
+}
+
+/* Nike-style model picker */
+.model-picker-container {
+  background: #0A0A0A;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.model-picker-header {
+  background: #0A0A0A;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  padding: 16px;
+}
+
+.model-option {
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  padding: 16px;
+}
+
+.model-option:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.model-option.active {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.model-option.active:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: white;
+}
+
+/* Nike-style spinner */
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Nike-style tab */
+.image-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+  margin-right: 20px;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.image-tab:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: white;
+}
+
+.image-tabs {
+  margin: 40px 0 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Nike-style textarea */
+.prompt-input-container textarea {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.2s ease;
+  border-radius: 0 !important;
+  font-size: 16px !important;
+  font-weight: 400;
+  padding: 16px !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.prompt-input-container textarea:focus {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: none;
+  outline: none;
+}
+
+/* Nike-style advanced controls */
+.advanced-prompt-container {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0A0A0A;
+  border-radius: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  margin-top: 0;
+  padding: 16px;
+}
+
+.advanced-prompt-header {
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slider-control {
+  margin-bottom: 24px;
+}
+
+.slider-header {
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nike-range {
+  appearance: none;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+  margin: 8px 0;
+}
+
+.nike-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 0;
+  background: white;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+/* Nike-style noise overlay */
+.nike-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: overlay;
+}

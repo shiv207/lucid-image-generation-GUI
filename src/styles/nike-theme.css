@@ -1,0 +1,87 @@
+/* Nike-inspired dark theme with noise texture */
+.nike-dark {
+  background-color: #000;
+  color: #fff;
+}
+
+.nike-card {
+  background-color: rgba(24, 24, 27, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.nike-gradient {
+  background: linear-gradient(to bottom, #000 0%, #111 50%, #222 100%);
+}
+
+.nike-button {
+  background: #000;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
+}
+
+.nike-button:hover {
+  background: #111;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Enhanced noise texture */
+.enhanced-noise {
+  position: relative;
+  overflow: hidden;
+}
+
+.enhanced-noise::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Nike-inspired text and spacing */
+.nike-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.nike-text {
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+}
+
+/* Updated workspace styling for Nike theme */
+.nike-workspace {
+  background-color: #000;
+  background-image: radial-gradient(circle at 15% 50%, #222 0%, transparent 25%),
+                    radial-gradient(circle at 85% 30%, #111 0%, transparent 30%);
+}
+
+/* Custom scrollbar for Nike theme */
+.nike-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.nike-scrollbar::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+.nike-scrollbar::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 20px;
+}
+
+.nike-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

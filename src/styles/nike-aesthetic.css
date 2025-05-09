@@ -1,0 +1,1875 @@
+/* Rounded aesthetic for Lucid */
+:root {
+  --lucid-bg: #0A0A0A;
+  --lucid-container-bg: rgba(15, 15, 15, 0.95);
+  --lucid-text: #ffffff;
+  --lucid-secondary-text: rgba(255, 255, 255, 0.9);
+  --lucid-accent: #00E5FF;
+  --lucid-accent-alt: #3d5afe;
+  --lucid-border: rgba(255, 255, 255, 0.08);
+  --lucid-control-bg: rgba(255, 255, 255, 0.05);
+  --lucid-button-bg: linear-gradient(135deg, #00E5FF, #3d5afe);
+  --lucid-button-text: #FFFFFF;
+  --lucid-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+  --lucid-glow: 0 0 25px rgba(0, 229, 255, 0.6);
+  --lucid-card-radius: 24px;
+  --lucid-gradient: linear-gradient(135deg, #00E5FF, #3d5afe);
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--lucid-bg);
+  color: var(--lucid-text);
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--lucid-bg);
+  color: var(--lucid-text);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent; /* Removes tap highlight on Android */
+}
+
+/* Mobile optimization */
+@media screen and (max-width: 768px) {
+  html {
+    overflow-x: hidden;
+    font-size: 14px;
+  }
+  
+  body {
+    font-size: 0.9rem;
+  }
+  
+  .app-container {
+    max-width: 100vw;
+    overflow-x: hidden;
+    transform: none; /* Improve image display on mobile */
+  }
+  
+  /* Mobile typography adjustments */
+  h1 {
+    font-size: 1.3rem;
+  }
+  
+  h2 {
+    font-size: 1rem;
+  }
+  
+  /* Fix content layout */
+  .lucid-container,
+  .prompt-container {
+    max-width: 100%;
+    transform: none; /* Improve image display on mobile */
+    padding: 0 8px;
+    margin: 0;
+  }
+  
+  /* Fix main heading text */
+  .hero-text {
+    font-size: 1.7rem !important;
+    line-height: 1.2;
+    padding: 10px 15px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    word-break: break-word;
+  }
+}
+
+/* Nike-style container */
+.nike-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  position: relative;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(61, 90, 254, 0.07) 0%, rgba(0, 0, 0, 0) 35%),
+    radial-gradient(circle at 80% 80%, rgba(0, 229, 255, 0.05) 0%, rgba(0, 0, 0, 0) 40%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0) 70%);
+  animation: backgroundPulse 25s infinite alternate ease-in-out;
+}
+
+@keyframes backgroundPulse {
+  0% {
+    background-image: 
+      radial-gradient(circle at 20% 30%, rgba(61, 90, 254, 0.05) 0%, rgba(0, 0, 0, 0) 30%),
+      radial-gradient(circle at 80% 80%, rgba(0, 229, 255, 0.04) 0%, rgba(0, 0, 0, 0) 40%),
+      radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0) 70%);
+  }
+  50% {
+    background-image: 
+      radial-gradient(circle at 30% 40%, rgba(61, 90, 254, 0.06) 0%, rgba(0, 0, 0, 0) 35%),
+      radial-gradient(circle at 70% 70%, rgba(0, 229, 255, 0.05) 0%, rgba(0, 0, 0, 0) 45%),
+      radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0) 65%);
+  }
+  100% {
+    background-image: 
+      radial-gradient(circle at 25% 35%, rgba(61, 90, 254, 0.04) 0%, rgba(0, 0, 0, 0) 30%),
+      radial-gradient(circle at 75% 75%, rgba(0, 229, 255, 0.03) 0%, rgba(0, 0, 0, 0) 40%),
+      radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0) 60%);
+  }
+}
+
+/* Nike-style workspace */
+.nike-workspace {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  position: relative;
+  padding: 0;
+  max-width: 1024px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Nike-style prompt input container */
+.prompt-input-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  margin-top: 24px;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Nike-style prompt container */
+.prompt-container {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 24px;
+  background: transparent;
+  margin-bottom: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Typography */
+.nike-logo {
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.nike-swoosh {
+  width: 40px;
+  height: auto;
+  margin-right: 15px;
+}
+
+.nike-title {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.nike-heading {
+  font-size: 48px;
+  font-weight: 900;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.nike-subheading {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.nike-section-title {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 15px;
+  color: #999;
+}
+
+.nike-text {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.prompt-heading {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+  color: white;
+  text-transform: uppercase;
+}
+
+/* Form elements */
+.nike-input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 1px solid var(--lucid-border);
+  background-color: var(--lucid-control-bg);
+  color: var(--lucid-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  resize: none;
+}
+
+/* Nike premium prompt input */
+.nike-prompt-input {
+  width: 100%;
+  padding: 20px 24px;
+  margin-bottom: 0;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: transparent;
+  color: white;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  border-radius: 0;
+  transition: all 0.3s ease;
+  resize: none;
+  outline: none;
+  height: auto;
+  position: relative;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nike-prompt-input:focus {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.nike-prompt-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.nike-prompt-input:focus {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.nike-input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.nike-select {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: var(--lucid-text);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="12" height="6"%3E%3Cpath d="M0 0l6 6 6-6z" fill="%23fff" fill-opacity=".5"/%3E%3C/svg%3E');
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  cursor: pointer;
+}
+
+.nike-select:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.nike-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: var(--lucid-button-bg);
+  color: var(--lucid-button-text);
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  position: relative;
+  overflow: hidden;
+}
+
+.nike-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.nike-button:hover::before {
+  transform: translateX(100%);
+}
+
+.nike-button:hover {
+  background-color: #0088FF;
+  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.nike-button:active {
+  transform: translateY(0);
+}
+
+.nike-button:disabled {
+  background-color: var(--lucid-bg);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.nike-button:hover {
+  background-color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.nike-button-secondary {
+  background-color: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: var(--lucid-text);
+}
+
+.nike-button-secondary:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+.nike-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  margin: 15px 0 25px;
+  cursor: pointer;
+}
+
+.nike-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--lucid-accent);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.nike-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--lucid-accent);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.nike-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--lucid-text);
+  cursor: pointer;
+}
+
+.nike-range-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 5px;
+}
+
+/* Ratio buttons */
+.nike-ratio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.nike-ratio-button {
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--lucid-text);
+  text-align: center;
+  border-radius: 4px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.nike-ratio-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nike-ratio-button.active {
+  background-color: var(--lucid-text);
+  color: var(--lucid-bg);
+  font-weight: bold;
+}
+
+/* Cards and imagery */
+.nike-card {
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  box-shadow: var(--lucid-shadow);
+  transition: transform 0.3s ease;
+}
+
+.nike-card:hover {
+  transform: translateY(-5px);
+}
+
+.nike-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.nike-card-content {
+  padding: 20px;
+}
+
+.nike-card-prompt {
+  font-size: 16px;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.nike-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nike-timestamp {
+  font-size: 12px;
+  color: #999;
+}
+
+/* Enhanced Nike-style loading animation */
+.nike-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0;
+  height: 100%;
+  position: relative;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.nike-loading-circle {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 60%, rgba(255,255,255,0.03) 61%, rgba(255,255,255,0.04) 100%);
+  animation: pulseCircle 3s infinite ease-in-out;
+}
+
+@keyframes pulseCircle {
+  0% { transform: scale(0.98); opacity: 0.4; }
+  50% { transform: scale(1.02); opacity: 0.6; }
+  100% { transform: scale(0.98); opacity: 0.4; }
+}
+
+.nike-spinner-container {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.nike-spinner {
+  animation: spin 1s linear infinite;
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top-color: white;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+@keyframes pulseSize {
+  from { transform: scale(0.8); opacity: 0.2; }
+  to { transform: scale(1.1); opacity: 0.05; }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.nike-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--lucid-accent);
+  border-radius: 50%;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 5px rgba(61, 90, 254, 0.3));
+}
+
+/* Nike-style loading text */
+.nike-loading-text {
+  position: relative;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.nike-loading-text::after {
+  content: '';
+  animation: loadingDots 1.5s infinite;
+}
+
+@keyframes loadingDots {
+  0% { content: '.'; }
+  33% { content: '..'; }
+  66% { content: '...'; }
+  100% { content: '.'; }
+}
+
+/* Nike-style loading progress bar */
+/* Aspect ratio buttons */
+.aspect-ratio-button {
+  background-color: rgba(20, 20, 20, 0.8);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 8px;
+  transition: all 0.2s ease;
+  height: 36px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  outline: none;
+  position: relative;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .aspect-ratio-button {
+    flex: 0 0 auto;
+    min-width: 60px;
+    padding: 0 14px;
+    margin-right: 8px;
+    height: 38px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 22px;
+    backdrop-filter: blur(5px);
+    letter-spacing: 0.04em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  
+  .aspect-ratio-button.active {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+  }
+  
+  .aspect-ratio-button:active {
+    transform: translateY(1px);
+  }
+}
+
+.aspect-ratio-button:hover {
+  background-color: rgba(40, 40, 40, 0.9);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.aspect-ratio-button.active {
+  background-color: white;
+  color: black;
+  border-color: white;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Generate button styling */
+.nike-generate-button {
+  background: linear-gradient(135deg, rgba(0, 120, 255, 0.8), rgba(0, 90, 220, 0.9));
+  color: white;
+  font-weight: 600;
+  padding: 8px 22px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(0, 90, 255, 0.2);
+  height: 40px;
+}
+
+.nike-generate-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 90, 255, 0.3);
+  background: linear-gradient(135deg, rgba(0, 130, 255, 0.9), rgba(0, 100, 230, 1));
+}
+
+.nike-generate-button:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(0, 90, 255, 0.2);
+}
+
+.nike-generate-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: rgba(100, 100, 100, 0.5);
+}
+
+.nike-generate-button svg {
+  width: 16px;
+  height: 16px;
+  stroke: white;
+  stroke-width: 2;
+  fill: none;
+}
+
+/* Nike loading spinner */
+.nike-loading-progress {
+  width: 120px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.nike-loading-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 30%;
+  background-color: white;
+  animation: progressMove 1.5s infinite;
+}
+
+@keyframes progressMove {
+  0% { left: -30%; }
+  40% { left: 30%; }
+  60% { left: 60%; }
+  100% { left: 100%; }
+}
+
+/* Main prompt area */
+.prompt-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .prompt-container {
+    margin: 15px auto 5px;
+    padding: 0 12px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .lucid-container {
+    padding: 0;
+    width: 100%;
+  }
+  
+  .prompt-input-area {
+    padding: 15px 12px;
+    border-radius: 18px;
+    background: rgba(25, 25, 25, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .prompt-input-area::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.01));
+    z-index: 1;
+  }
+  
+  .chat-input {
+    padding: 12px 15px;
+    font-size: 15px;
+    height: 46px;
+    background: rgba(30, 30, 30, 0.6);
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    transition: all 0.3s ease;
+  }
+  
+  .chat-input:focus {
+    background: rgba(35, 35, 35, 0.7);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(0, 120, 255, 0.15);
+  }
+  
+  .chat-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 300;
+  }
+  
+  /* Fix heading that appears cut off */
+  .lucid-hero-text {
+    font-size: 24px !important;
+    padding: 10px 20px;
+    line-height: 1.2;
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+}
+
+.prompt-input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+  background-color: var(--lucid-container-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.prompt-input-container:focus-within {
+  box-shadow: 0 8px 40px rgba(0, 122, 255, 0.2);
+  border-color: rgba(0, 122, 255, 0.3);
+}
+
+/* Nike model button */
+.nike-model-button {
+  background-color: rgba(20, 20, 20, 0.7);
+  width: 220px;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 8px 16px;
+  border-radius: 30px;
+  transition: all 0.2s ease;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 768px) {
+  .nike-model-button {
+    width: auto;
+    min-width: 100px;
+    height: 38px;
+    padding: 0 12px;
+    flex-shrink: 0;
+    border-radius: 24px;
+    background: rgba(20, 20, 20, 0.85);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  }
+  
+  .model-button-content {
+    gap: 6px;
+    justify-content: center;
+  }
+  
+  .model-button-content svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .model-button-content span {
+    font-size: 12px;
+    padding-right: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.model-button-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 10px;
+}
+
+.model-button-content svg {
+  width: 20px;
+  height: 20px;
+  fill: white;
+}
+
+.model-button-content span {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.nike-model-button:hover {
+  background-color: rgba(30, 30, 30, 0.9);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Control container layout */
+.prompt-controls-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+  gap: 10px;
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  padding: 8px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.prompt-controls-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.prompt-controls-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
+/* Mobile responsive controls */
+@media screen and (max-width: 768px) {
+  .prompt-controls-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    margin-top: 5px;
+  }
+  
+  .prompt-controls-left {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 5px 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .prompt-controls-left::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+  
+  .prompt-controls-right {
+    width: 100%;
+    margin-left: 0;
+  }
+  
+  .nike-generate-button {
+    width: 100%;
+    justify-content: center;
+    height: 50px;
+    border-radius: 25px;
+    margin-top: 10px;
+    background: linear-gradient(135deg, rgba(0, 120, 255, 0.8), rgba(0, 80, 200, 0.9));
+    box-shadow: 0 6px 15px rgba(0, 80, 200, 0.25);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  
+  .nike-generate-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    border-radius: 25px;
+    z-index: 0;
+  }
+  
+  .nike-generate-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 8px rgba(0, 80, 200, 0.2);
+  }
+  
+  .prompt-input-container {
+    margin-bottom: 12px;
+    border-radius: 12px;
+  }
+  
+  /* Fix input container height */
+  .chat-input-container {
+    padding: 0;
+  }
+  
+  .chat-input {
+    height: auto;
+    min-height: 40px;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  
+  /* Fix model and aspect buttons */
+  .nike-model-button {
+    height: 36px;
+    min-width: 100px;
+    padding: 0 10px;
+    margin-right: 8px;
+  }
+  
+  .aspect-ratio-button {
+    height: 36px;
+    min-width: 55px;
+    padding: 0 10px;
+    margin-right: 8px;
+  }
+  
+  /* Fix creations heading */
+  .section-title {
+    font-size: 16px;
+    margin: 15px 0 10px;
+    padding-left: 5px;
+  }
+}
+
+.prompt-control-button {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--lucid-text);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 8px;
+  margin-right: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.prompt-control-button:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.prompt-control-button.active {
+  background-color: var(--lucid-accent);
+  border-color: var(--lucid-accent);
+  color: white;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
+}
+
+.generate-icon {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
+  margin-right: 6px;
+}
+
+/* Empty state */
+.nike-empty-state {
+  text-align: center;
+  padding: 80px 0;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+}
+
+.nike-empty-state::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0, 122, 255, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+  z-index: -1;
+  opacity: 0.6;
+}
+
+.nike-empty-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 40px;
+  opacity: 0.7;
+}
+
+/* Nike empty state typography */
+.nike-empty-heading {
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.nike-empty-text {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 40px;
+  opacity: 0.8;
+  max-width: 400px;
+  text-align: center;
+}
+
+.lucid-generate-button {
+  background-color: black !important;
+  color: white !important;
+  border: 1px solid white !important;
+  border-radius: 20px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 14px !important;
+  height: 40px;
+  padding: 0 24px !important;
+  position: relative;
+  overflow: hidden;
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
+
+.lucid-generate-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  background-color: white !important;
+  color: black !important;
+}
+
+.lucid-generate-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+/* Generate button animation */
+/* Removed extra glow effect */
+
+/* Removed hover glow */
+
+.nike-empty-button {
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 20px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 14px;
+  height: 48px;
+  padding: 0 32px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nike-empty-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Workspace content */
+.nike-workspace-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Image tabs */
+.image-tabs {
+  display: flex;
+  margin: 0 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-left: 20px;
+}
+
+.image-tab {
+  padding: 16px 0;
+  color: var(--lucid-text);
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+}
+
+.image-tab::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--lucid-text);
+}
+
+.nike-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  width: 100%;
+  padding: 20px 0;
+  align-items: start;
+}
+
+/* Mobile responsive grid */
+@media screen and (max-width: 768px) {
+  .nike-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 12px 0;
+  }
+}
+
+/* Mobile header fix - IMPORTANT */
+.lucid-hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+@media screen and (max-width: 768px) {
+  .lucid-hero {
+    padding: 20px 0 10px;
+    height: auto;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .lucid-hero h1 {
+    font-size: 32px !important;
+    line-height: 1.2;
+    padding: 0;
+    margin: 0;
+    width: 90%;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    background: linear-gradient(135deg, #fff, rgba(255, 255, 255, 0.8));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Mobile creations section */
+  .empty-state-container {
+    padding: 25px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Section title styling */
+  .section-title {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin: 25px 0 15px;
+    padding-left: 15px;
+    position: relative;
+    text-transform: uppercase;
+  }
+  
+  .section-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 18px;
+    background: linear-gradient(to bottom, #fff, rgba(255, 255, 255, 0.5));
+    border-radius: 3px;
+  }
+  
+  /* Fix model list */
+  .model-list {
+    top: 100%;
+    width: 100%;
+    max-height: 50vh;
+    border-radius: 16px;
+    padding: 12px;
+    background: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  .model-option {
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 5px;
+    transition: all 0.2s ease;
+  }
+  
+  .model-option:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+  
+  /* Enhanced save notification */
+  .save-notification {
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    padding: 12px 24px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    animation: mobileSaveNotification 2s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  
+  @keyframes mobileSaveNotification {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    15% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+    20% { transform: translate(-50%, -50%) scale(1); }
+    85% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  /* Fix spacing and alignment */
+  .app-container {
+    padding: 0;
+  }
+  
+  .prompt-controls-container {
+    margin-top: 10px;
+  }
+  
+  .aspect-ratio-container {
+    margin-bottom: 15px;
+  }
+}
+
+/* Nike-grid img animation simplified */
+.nike-grid img {
+  animation: imageReveal 0.8s ease-out;
+  transition: all 0.3s ease;
+}
+
+/* Mobile image display optimizations */
+@media screen and (max-width: 768px) {
+  .nike-grid {
+    padding: 15px 12px 30px;
+    margin: 0;
+    grid-gap: 16px;
+  }
+  
+  .aspect-ratio-container {
+    transform: scale(0.98);
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    margin-bottom: 0;
+  }
+  
+  .aspect-ratio-container:active {
+    transform: scale(0.96);
+  }
+  
+  /* Better tap states for mobile */
+  .prompt-control-button, 
+  .aspect-ratio-button,
+  .nike-model-button,
+  .nike-generate-button {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Fix input height and placement */
+  .chat-input-container {
+    margin: 0;
+  }
+  
+  /* Better spacing for content */
+  .content-area {
+    padding: 0;
+  }
+  
+  /* Add subtle animation to the model button */
+  .nike-model-button:active .model-button-content svg {
+    transform: rotate(-10deg);
+  }
+  
+  /* Enhanced scroll behavior */
+  .prompt-controls-left:after {
+    content: '';
+    min-width: 10px;
+    height: 100%;
+  }
+  
+  /* Improve image focus states */
+  .nike-grid img:focus {
+    outline: none;
+  }
+  
+  /* Enhance empty state for creations */
+  .empty-state-icon {
+    opacity: 0.6;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+  }
+  
+  /* Add subtle background gradient to enhance mobile design */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+    z-index: -1;
+    pointer-events: none;
+  }
+}
+
+@keyframes imageReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Ensure animation completes in a finished state */
+.nike-grid .aspect-ratio-container {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Subtle staggered animation for multiple images */
+.nike-grid .group:nth-child(2) img { animation-delay: 0.05s; }
+.nike-grid .group:nth-child(3) img { animation-delay: 0.1s; }
+.nike-grid .group:nth-child(4) img { animation-delay: 0.15s; }
+.nike-grid .group:nth-child(5) img { animation-delay: 0.2s; }
+
+/* Aspect ratio containers */
+.aspect-ratio-container {
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(10, 10, 10, 0.4);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media screen and (max-width: 768px) {
+  .aspect-ratio-container {
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .aspect-ratio-container:hover {
+    transform: translateY(-2px);
+  }
+  
+  .save-notification {
+    padding: 8px 16px;
+    font-size: 12px;
+    border-radius: 16px;
+  }
+}
+
+.aspect-ratio-container[class*="1:1"] {
+  aspect-ratio: 1/1;
+}
+
+.aspect-ratio-container[class*="16:9"] {
+  aspect-ratio: 16/9;
+}
+
+.aspect-ratio-container[class*="9:16"] {
+  aspect-ratio: 9/16;
+}
+
+.aspect-ratio-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.nike-grid .group:hover img {
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Save button styling */
+.save-button {
+  transition: all 0.2s ease;
+  opacity: 0.8;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.save-button:hover {
+  transform: scale(1.1);
+  opacity: 1;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.save-button:active {
+  transform: scale(0.95);
+}
+
+.save-button svg {
+  width: 16px;
+  height: 16px;
+  stroke: white;
+  stroke-width: 2;
+  fill: none;
+}
+
+/* Save notification styling */
+.save-notification {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 12px 24px;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-size: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: fadeInOut 1.8s ease-in-out;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  text-transform: uppercase;
+}
+
+.save-notification::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  background: linear-gradient(125deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+  z-index: -1;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+  15% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
+}
+
+/* Image cards */
+.nike-grid img {
+  border-radius: 12px;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  animation: imageReveal 0.8s ease-out forwards;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform, opacity;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+}
+
+.nike-grid .group:hover img {
+  transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Error message */
+.nike-error {
+  background-color: rgba(255, 0, 0, 0.1);
+  border-left: 3px solid var(--lucid-accent-alt);
+  padding: 15px 20px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+}
+
+/* Advanced controls and model picker */
+.advanced-prompt-container,
+.model-picker-container {
+  background-color: rgba(0, 0, 0, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  animation: modalAppear 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes modalAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.advanced-prompt-header,
+.model-picker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+/* Nike model button styling */
+.nike-model-button {
+  min-width: 180px;
+  width: auto;
+  padding: 8px 16px !important;
+}
+
+.nike-selected-model {
+  font-weight: 700;
+  color: white;
+  margin-left: 8px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100px;
+}
+
+.advanced-prompt-title,
+.model-picker-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.advanced-prompt-close,
+.model-picker-close {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  opacity: 0.7;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.advanced-prompt-close:hover,
+.model-picker-close:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: rotate(90deg);
+}
+
+.advanced-controls-section {
+  margin-top: 20px;
+}
+
+.slider-control {
+  margin-bottom: 20px;
+}
+
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.slider-value {
+  font-weight: 600;
+  color: var(--lucid-text);
+}
+
+/* Model picker - Nike style */
+.model-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 8px 4px;
+}
+
+.model-option {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 12px;
+  background-color: rgba(20, 20, 20, 0.8);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  animation: modelOptionFadeIn 0.5s ease-out;
+}
+
+@keyframes modelOptionFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.model-option:hover {
+  background-color: rgba(40, 40, 40, 0.8);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.model-option.active {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.model-option.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.03), rgba(61, 90, 254, 0.04));
+  border-radius: 12px;
+  z-index: -1;
+}
+
+.model-option-radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.model-option.active .model-option-radio {
+  border-color: white;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.model-option-radio-selected {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.model-option-content {
+  flex: 1;
+}
+
+/* Model name container with badge */
+.model-option-name-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.model-option-name {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.model-selected-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: black;
+  background-color: white;
+  padding: 2px 6px;
+  border-radius: 10px;
+  letter-spacing: 0.05em;
+}
+
+/* Removed glow-pulse animation for subtlety */
+
+.model-option-description {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.01em;
+}
+
+/* Media query */
+@media (max-width: 768px) {
+  .nike-container {
+    flex-direction: column;
+  }
+  
+  .nike-sidebar {
+    width: 100%;
+    height: auto;
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+  
+  .nike-workspace {
+    height: 50vh;
+  }
+  
+  .nike-grid {
+    grid-template-columns: 1fr;
+  }
+}
