@@ -8,9 +8,7 @@
 
 <div align="center">
 
-## Premium AI Image Generation with a Modern, Nike & Apple-Inspired UI
-
-<img src="https://github.com/shiv207/lucid-image-generation-GUI/raw/main/public/lucid-preview.png" alt="Lucid App Screenshot" width="600"/>
+## Premium AI Image Generation with a Modern UI
 
 *Transform your ideas into stunning visuals with AI-powered image generation*
 </div>
@@ -18,7 +16,7 @@
 ## ✨ Features
 
 - **🖼️ Multiple AI Model Support**: Choose between Flux-Schnell, Stable Diffusion XL, Stable Diffusion 3, and more
-- **🎨 Premium UI Experience**: Inspired by Nike and Apple's design aesthetics with frosted glass effects and subtle gradient glows
+- **🎨 Premium UI Experience**: Modern interface with frosted glass effects and subtle gradient glows
 - **📱 Mobile-Optimized**: Fully responsive design that works beautifully on all devices
 - **🔄 Real-Time Feedback**: Elegant loading states and real-time visualization of generation progress
 - **⚙️ Advanced Controls**: Fine-tune your generations with guidance scale, steps, and negative prompts
@@ -93,7 +91,7 @@ src/
 ├── api/           # API integration with HuggingFace
 ├── components/    # UI components including Workspace, SettingsPanel
 ├── context/       # Application state with React Context API
-├── styles/        # Premium CSS styling with Nike-inspired aesthetic
+├── styles/        # Premium CSS styling with modern aesthetic
 └── assets/        # Images and SVG icons
 ```
 
@@ -101,8 +99,8 @@ src/
 
 Lucid follows modern design principles with an emphasis on:
 
-- **Rounded aesthetics**: Soft, organic shapes for a contemporary feel
-- **Maximum noise texture**: Subtle texture elements for depth and premium feel
+- **Modern aesthetics**: Clean, contemporary interface elements
+- **Subtle textures**: Elegant texture elements for depth and premium feel
 - **Glassmorphism effects**: Frosted glass and blur effects throughout the UI
 - **Responsive design**: Seamless experience across all device sizes
 - **Premium micro-interactions**: Subtle animations and feedback for user actions
