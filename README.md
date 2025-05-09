@@ -1,75 +1,135 @@
-# React + Vite
+# Lucid Image Generation App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React](https://img.shields.io/badge/React-19-blue?logo=react)
+![Vite](https://img.shields.io/badge/Vite-5.0-646CFF?logo=vite)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-10.0-blueviolet)
+![HuggingFace](https://img.shields.io/badge/HuggingFace_API-Integrated-yellow?logo=huggingface)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-A beautiful, Arc-inspired image generation web application using React and HuggingFace AI. Create stunning images with multiple AI models through an aesthetic, glassmorphic UI.
+<div align="center">
 
-## Features
+## Premium AI Image Generation with a Modern, Nike & Apple-Inspired UI
 
-- **Multi-Model Support**: Generate images using various AI models including Flux-Schnell and Stable Diffusion
-- **Arc-Inspired Design**: Beautiful, modern interface with frosted glass elements and vibrant gradients
-- **Theme Switching**: Multiple color themes to customize your experience
-- **Advanced Controls**: Fine-tune your generations with parameters like guidance scale and steps
-- **Responsive**: Works beautifully on any device
+<img src="https://github.com/shiv207/lucid-image-generation-GUI/raw/main/public/lucid-preview.png" alt="Lucid App Screenshot" width="600"/>
 
-## Technologies
+*Transform your ideas into stunning visuals with AI-powered image generation*
+</div>
 
-- React 19
-- Tailwind CSS
-- Framer Motion for animations
-- HuggingFace API for image generation
+## ✨ Features
 
-## Getting Started
+- **🖼️ Multiple AI Model Support**: Choose between Flux-Schnell, Stable Diffusion XL, Stable Diffusion 3, and more
+- **🎨 Premium UI Experience**: Inspired by Nike and Apple's design aesthetics with frosted glass effects and subtle gradient glows
+- **📱 Mobile-Optimized**: Fully responsive design that works beautifully on all devices
+- **🔄 Real-Time Feedback**: Elegant loading states and real-time visualization of generation progress
+- **⚙️ Advanced Controls**: Fine-tune your generations with guidance scale, steps, and negative prompts
+- **🔧 Customizable API Key**: Change your HuggingFace API key directly from the in-app settings panel
+- **💾 Image Save & Download**: Download your creations with just one click
+- **🖥️ Progressive Web App (PWA)**: Can be installed and used like a native application
+
+## 🚀 Technologies
+
+- **Front-end**: React 19 with Vite and Framer Motion animations
+- **Styling**: Custom CSS with glassmorphism, noise textures, and premium animation effects
+- **API Integration**: HuggingFace API for AI image generation
+- **Performance**: Optimized rendering and hardware-accelerated animations
+
+## 🔧 Getting Started
 
 ### Prerequisites
 
 - Node.js v18 or higher
-- A HuggingFace API key with appropriate permissions
+- A [HuggingFace API key](https://huggingface.co/settings/tokens) with appropriate permissions
 
 ### Installation
 
-1. Clone the repository
+1. **Clone the repository**
+
    ```bash
-   git clone https://github.com/yourusername/lucid.git
-   cd lucid
+   git clone https://github.com/shiv207/lucid-image-generation-GUI.git
+   cd lucid-image-generation-GUI
    ```
 
-2. Install dependencies
+2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
-3. Create a `.env` file in the project root and add your HuggingFace API key
+3. **Set up environment variables**
+
+   Create a `.env` file in the project root and add your HuggingFace API key:
+
    ```
    VITE_HUGGINGFACE_API_KEY=your_api_key_here
    ```
 
-4. Start the development server
+   Alternatively, you can add your API key directly through the app's settings panel.
+
+4. **Start the development server**
+
    ```bash
    npm run dev
    ```
 
-## Usage
+5. **Build for production**
 
-1. Enter your prompt in the sidebar
-2. Select your desired model and aspect ratio
-3. Adjust advanced parameters if needed
-4. Click the Generate button
-5. View, download, and share your creations
+   ```bash
+   npm run build
+   ```
 
-## Project Structure
+## 🎮 Usage
+
+1. **Enter your prompt** in the text area
+2. **Select your desired model** using the model selector
+3. **Choose an aspect ratio** for your image (1:1, 16:9, or 9:16)
+4. **Adjust advanced parameters** if needed (steps, guidance scale, negative prompts)
+5. **Click the Generate button** to create your image
+6. **Download your image** using the save button that appears on hover
+
+## 🏗️ Project Structure
 
 ```
 src/
 ├── api/           # API integration with HuggingFace
-├── components/    # UI components
-├── context/       # Application state management
-├── styles/        # CSS and styling utilities
-└── assets/        # Images and other static assets
+├── components/    # UI components including Workspace, SettingsPanel
+├── context/       # Application state with React Context API
+├── styles/        # Premium CSS styling with Nike-inspired aesthetic
+└── assets/        # Images and SVG icons
 ```
 
-## License
+## 🎨 Design Principles
 
-MIT
+Lucid follows modern design principles with an emphasis on:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Rounded aesthetics**: Soft, organic shapes for a contemporary feel
+- **Maximum noise texture**: Subtle texture elements for depth and premium feel
+- **Glassmorphism effects**: Frosted glass and blur effects throughout the UI
+- **Responsive design**: Seamless experience across all device sizes
+- **Premium micro-interactions**: Subtle animations and feedback for user actions
+
+## 🔑 API Key Management
+
+Your HuggingFace API key can be managed in two ways:
+
+1. **Environment variable**: Set it in the `.env` file during development
+2. **In-app settings**: Click the settings gear icon and enter your key through the UI
+
+Your API key is stored securely in the browser's local storage for persistence.
+
+## 📱 Mobile Features
+
+- **Single-column layout**: Optimized for smaller screens
+- **Touch-friendly controls**: Larger tap targets for mobile interaction
+- **PWA support**: Can be installed on your home screen
+- **Responsive image grid**: Automatically adjusts based on screen size
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgements
+
+- [HuggingFace](https://huggingface.co/) for providing the AI model APIs
+- [React](https://reactjs.org/) and [Vite](https://vitejs.dev/) for the development framework
+- [Framer Motion](https://www.framer.com/motion/) for smooth animations
+
