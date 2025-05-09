@@ -69,36 +69,35 @@ async function generateImage({
   guidanceScale = 7.5,
   negativePrompt = '',
 }) {
-  // Validate API key
-  const storedApiKey = localStorage.getItem('huggingface_api_key');
-  const API_KEY = storedApiKey || import.meta.env.VITE_HUGGINGFACE_API_KEY;
+  // Get API key from localStorage first, fallback to env variable
+  const API_KEY = localStorage.getItem('HUGGINGFACE_API_KEY') || import.meta.env.VITE_HUGGINGFACE_API_KEY;
   
-  if (!API_KEY || API_KEY.trim() === '') {
-    throw new Error('API key is missing. Please add your HuggingFace API key in settings.');
+  if (!API_KEY) {
+    throw new Error('No API key found. Please set your HuggingFace API key in the settings.');
   }
   
   console.log('Using prompt:', prompt);
   console.log('Using model:', model);
   
-  // Map our model constants to the actual model names
-  let modelName;
-  if (model === MODELS.FLUX_SCHNELL) {
-    modelName = 'stabilityai/stable-diffusion-xl-base-1.0'; // We'll use SDXL as Flux can be restricted
-  } else if (model === MODELS.FLUX_DEV) {
-    modelName = 'black-forest-labs/FLUX.1-dev';
-  } else if (model === MODELS.STABLE_DIFFUSION_XL) {
-    modelName = 'stabilityai/stable-diffusion-xl-base-1.0';
-  } else if (model === MODELS.STABLE_DIFFUSION_3) {
-    modelName = 'stabilityai/stable-diffusion-xl-base-1.0'; // Fallback to SDXL if SD3 is restricted
-  }
-  
   try {
+    // Map our model constants to the actual model names
+    let modelName;
+    if (model === MODELS.FLUX_SCHNELL) {
+      modelName = 'stabilityai/stable-diffusion-xl-base-1.0'; // We'll use SDXL as Flux can be restricted
+    } else if (model === MODELS.FLUX_DEV) {
+      modelName = 'black-forest-labs/FLUX.1-dev';
+    } else if (model === MODELS.STABLE_DIFFUSION_XL) {
+      modelName = 'stabilityai/stable-diffusion-xl-base-1.0';
+    } else if (model === MODELS.STABLE_DIFFUSION_3) {
+      modelName = 'stabilityai/stable-diffusion-xl-base-1.0'; // Fallback to SDXL if SD3 is restricted
+    }
+    
     // First try the HuggingFace Inference API
-    console.log('Trying HuggingFace Inference API with model:', modelName);
-    
-    const inferenceEndpoint = `https://api-inference.huggingface.co/models/${modelName}`;
-    
     try {
+      console.log('Trying HuggingFace Inference API with model:', modelName);
+      
+      const inferenceEndpoint = `https://api-inference.huggingface.co/models/${modelName}`;
+      
       const response = await fetch(
         inferenceEndpoint,
         {
@@ -123,21 +122,10 @@ async function generateImage({
       
       if (response.ok) {
         console.log('HuggingFace Inference API request successful');
-        const blob = await response.blob();
-        if (!blob || blob.size === 0) {
-          throw new Error('Received empty response from API');
-        }
-        return blob;
+        return await response.blob();
       } else {
-        // Handle specific error codes
-        if (response.status === 401) {
-          throw new Error('Invalid API key. Please check your HuggingFace API key in settings.');
-        } else if (response.status === 503) {
-          throw new Error('Model is currently loading or busy. Please try again in a few moments.');
-        } else {
-          console.warn('HuggingFace Inference API request failed:', response.status);
-          throw new Error(`API returned status ${response.status}`);
-        }
+        console.warn('HuggingFace Inference API request failed:', response.status);
+        throw new Error(`API returned ${response.status}`);
       }
     } catch (inferenceError) {
       console.warn('Inference API attempt failed:', inferenceError);
@@ -151,45 +139,32 @@ async function generateImage({
         togetherModel = 'black-forest-labs/FLUX.1-dev';
       }
       
-      try {
-        const togetherResponse = await fetch(
-          'https://router.huggingface.co/together/v1/images/generations',
-          {
-            method: 'POST',
-            headers: {
-              'Authorization': `Bearer ${API_KEY}`,
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              model: togetherModel,
-              prompt: prompt,
-              negative_prompt: negativePrompt,
-              width: width,
-              height: height,
-              n: numImages,
-              steps: steps,
-              guidance_scale: guidanceScale,
-            })
-          }
-        );
-        
-        if (!togetherResponse.ok) {
-          if (togetherResponse.status === 401) {
-            throw new Error('Invalid API key. Please check your HuggingFace API key in settings.');
-          } else {
-            throw new Error(`Secondary API failed with status ${togetherResponse.status}`);
-          }
+      const togetherResponse = await fetch(
+        'https://router.huggingface.co/together/v1/images/generations',
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${API_KEY}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            model: togetherModel,
+            prompt: prompt,
+            negative_prompt: negativePrompt,
+            width: width,
+            height: height,
+            n: numImages,
+            steps: steps,
+            guidance_scale: guidanceScale,
+          })
         }
-        
-        const blob = await togetherResponse.blob();
-        if (!blob || blob.size === 0) {
-          throw new Error('Received empty response from API');
-        }
-        return blob;
-      } catch (togetherError) {
-        console.error('Together API attempt failed:', togetherError);
-        throw new Error(togetherError.message || 'Failed to generate image with backup API');
+      );
+      
+      if (!togetherResponse.ok) {
+        throw new Error(`Both APIs failed. Last error: ${togetherResponse.status}`);
       }
+      
+      return await togetherResponse.blob();
     }
   } catch (error) {
     console.error('Error generating image:', error);
@@ -216,10 +191,6 @@ export const AppProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [images, setImages] = useState([]);
   
-  // Settings state
-  const [showSettings, setShowSettings] = useState(false);
-  const [apiKey, setApiKey] = useState(localStorage.getItem('huggingface_api_key') || '');
-  
   // Generation settings
   const [promptInput, setPromptInput] = useState('');
   const [negativePrompt, setNegativePrompt] = useState('');
@@ -228,66 +199,6 @@ export const AppProvider = ({ children }) => {
   const [steps, setSteps] = useState(30);
   const [guidanceScale, setGuidanceScale] = useState(7.5);
   const [numImages, setNumImages] = useState(1);
-  
-  // API key management
-  const updateApiKey = (newKey) => {
-    setApiKey(newKey);
-    if (newKey) {
-      localStorage.setItem('huggingface_api_key', newKey);
-    } else {
-      localStorage.removeItem('huggingface_api_key');
-    }
-  };
-  
-  const verifyApiKey = async (keyToVerify) => {
-    try {
-      // Use the provided key or the current apiKey from state
-      const keyToCheck = keyToVerify || apiKey;
-      
-      if (!keyToCheck || keyToCheck.trim() === '') {
-        return { valid: false, message: 'API key is empty' };
-      }
-      
-      setLoading(true);
-      
-      try {
-        // Use a more reliable endpoint for verification
-        const response = await fetch('https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0', {
-          method: 'HEAD',
-          headers: {
-            'Authorization': `Bearer ${keyToCheck}`
-          }
-        });
-        
-        setLoading(false);
-        
-        if (response.ok || response.status === 400) {
-          // 400 is actually okay - it means the API key is valid but we didn't send proper data
-          return { valid: true, message: 'API key is valid' };
-        } else if (response.status === 401) {
-          return { valid: false, message: 'Invalid API key' };
-        } else {
-          return { valid: false, message: `Server error: ${response.status}` };
-        }
-      } catch (networkErr) {
-        console.error('API key verification network error:', networkErr);
-        setLoading(false);
-        // This checks for specific network errors and provides a clearer message
-        return { 
-          valid: false, 
-          message: 'Network connection error. Please check your internet connection.'
-        };
-      }
-    } catch (err) {
-      // This catches any other errors that might occur
-      console.error('Unexpected error during API key verification:', err);
-      setLoading(false);
-      return { 
-        valid: false, 
-        message: 'An unexpected error occurred. Please try again.'
-      };
-    }
-  };
   
   // Theme switching
   const changeTheme = (themeName) => {
@@ -385,13 +296,6 @@ export const AppProvider = ({ children }) => {
       setLoading,
       error,
       setError,
-      
-      // Settings
-      showSettings,
-      setShowSettings,
-      apiKey,
-      updateApiKey,
-      verifyApiKey,
       
       // Actions
       handleGenerate,

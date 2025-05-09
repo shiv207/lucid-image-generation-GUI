@@ -1470,12 +1470,6 @@ body {
   }
 }
 
-/* Ensure animation completes in a finished state */
-.nike-grid .aspect-ratio-container {
-  will-change: transform;
-  transform: translateZ(0);
-}
-
 /* Subtle staggered animation for multiple images */
 .nike-grid .group:nth-child(2) img { animation-delay: 0.05s; }
 .nike-grid .group:nth-child(3) img { animation-delay: 0.1s; }
@@ -1604,16 +1598,7 @@ body {
   border-radius: 12px;
   transition: all 0.4s ease;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  animation: imageReveal 0.8s ease-out forwards;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  will-change: transform, opacity;
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: relative;
+  animation: imageReveal 0.8s ease-out;
 }
 
 .nike-grid .group:hover img {

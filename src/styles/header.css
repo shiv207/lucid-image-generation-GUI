@@ -1,0 +1,32 @@
+/* App header styling */
+.app-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px 20px;
+  position: relative;
+  z-index: 100;
+}
+
+.header-right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .app-header {
+    padding: 10px 15px;
+  }
+  
+  .settings-button span {
+    display: none;
+  }
+  
+  .settings-button {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    justify-content: center;
+  }
+}

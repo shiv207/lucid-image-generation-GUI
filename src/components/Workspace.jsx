@@ -287,6 +287,35 @@ export default function Workspace() {
           </div>
         </div>
         
+        {/* Error message area */}
+        {error && (
+          <div className="nike-error-container">
+            <div className="nike-error-message">
+              {error.message.includes('API key') ? (
+                <>
+                  <span className="error-icon">⚠️</span>
+                  <span className="error-text">{error.message}</span>
+                  <button 
+                    className="error-action-button" 
+                    onClick={() => {
+                      // Find and click the settings button
+                      const settingsBtn = document.querySelector('.settings-button');
+                      if (settingsBtn) settingsBtn.click();
+                    }}
+                  >
+                    Update API Key
+                  </button>
+                </>
+              ) : (
+                <>
+                  <span className="error-icon">⚠️</span>
+                  <span className="error-text">{error.message}</span>
+                </>
+              )}
+            </div>
+          </div>
+        )}
+        
         {/* Single tab for images */}
         <div className="image-tabs">
           <div className="image-tab">
